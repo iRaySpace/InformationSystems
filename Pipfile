@@ -9,4 +9,3 @@ verify_ssl = true
 django = "*"
 
 [requires]
-python_version = ">=3.5"
