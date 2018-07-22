@@ -1,6 +1,12 @@
 # payroll/views.py
-from django.http import HttpResponse
+from .models import Employee, PayrollPeriod
+from rest_framework import generics
+from .serializers import EmployeeSerializer, PayrollPeriodSerializer
 
-# Create your views here.
-def homePageView(request):
-  return HttpResponse('Hello, World!')
+class EmployeeListCreate(generics.ListCreateAPIView):
+  queryset = Employee.objects.all()
+  serializer_class = EmployeeSerializer
+
+class PayrollPeriodListCreate(generics.ListCreateAPIView):
+  queryset = PayrollPeriod.objects.all()
+  serializer_class = PayrollPeriodSerializer
