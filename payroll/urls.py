@@ -1,9 +1,11 @@
 # payroll/urls.py
-from django.urls import path
+from rest_framework.routers import SimpleRouter
 
 from . import views
 
-urlpatterns = [
-  path('api/payroll_period/', views.PayrollPeriodListCreate.as_view()),
-  path('api/employee/', views.EmployeeListCreate.as_view())
-]
+router = SimpleRouter()
+router.register("employees", views.EmployeeListCreate)
+router.register("payroll_periods", views.PayrollPeriodListCreate)
+router.register("payroll_entries", views.PayrollEntryListCreate)
+
+urlpatterns = router.urls
